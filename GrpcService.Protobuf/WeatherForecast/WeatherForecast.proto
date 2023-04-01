@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcWeatherForecastProtobuf";
+
+package WeatherForecast;
+
+service WeatherForecast {
+  rpc Forecasting (WeatherForecastRequest) returns (WeatherForecastResponse);
+}
+
+message WeatherForecastRequest {
+
+}
+
+message WeatherForecastResponse {
+	repeated WeatherForecastData WeatherForecastData = 1;
+}
+
+message WeatherForecastData {
+	string Timestamp = 1;
+	string Summary = 2;
+	int32 TemperatureC = 3;
+	int32 TemperatureF = 4;
+}

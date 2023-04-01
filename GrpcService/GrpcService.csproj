@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.52.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GrpcService.Protobuf.Logic\GrpcService.Protobuf.Logic.csproj" />
   </ItemGroup>
 
