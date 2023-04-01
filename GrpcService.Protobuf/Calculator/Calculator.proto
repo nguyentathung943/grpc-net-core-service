@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+package calculator;
+
+option csharp_namespace = "GrpcCalculatorProtobuf";
+
+import "Calculator/Sum.proto";
+
+service Calculator {
+    rpc Sum(SumRequest) returns (SumResponse);
+}
