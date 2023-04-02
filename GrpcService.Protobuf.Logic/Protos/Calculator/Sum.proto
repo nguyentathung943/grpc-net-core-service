@@ -1,14 +1,14 @@
 ﻿syntax = "proto3";
 
-package calculator;
+package Calculator;
 
 option csharp_namespace = "GrpcSumProtobuf";
 
 message SumRequest {
-    int32 first_number = 1;
-    int32 second_number = 2;
+    int32 FirstNumber = 1;
+    int32 SecondNumber = 2;
 }
 
 message SumResponse {
-    int32 result = 1;
+    int32 Result = 1;
 }

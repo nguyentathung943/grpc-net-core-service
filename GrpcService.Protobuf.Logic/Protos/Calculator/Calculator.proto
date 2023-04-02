@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+package Calculator;
+
+option csharp_namespace = "GrpcCalculatorProtobuf";
+
+import "Sum.proto";
+import "PrimeFactors.proto";
+import "Average.proto";
+import "FindCurrentMax.proto";
+
+service Calculator {
+    rpc Sum(SumRequest) returns (SumResponse);
+    rpc FindPrimeFactors(PrimesRequest) returns (stream PrimesResponse);
+    rpc FindAverage(stream AverageRequest) returns (AverageResponse);
+    rpc FindCurrentMax(stream MaxRequest) returns (stream MaxResponse);
+}

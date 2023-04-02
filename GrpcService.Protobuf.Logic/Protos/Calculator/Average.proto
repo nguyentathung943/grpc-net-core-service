@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+package Calculator;
+
+option csharp_namespace = "GrpcAverageProtobuf";
+
+message AverageRequest {
+    int32 Value = 1;
+}
+
+message AverageResponse {
+    float Result = 1;
+}

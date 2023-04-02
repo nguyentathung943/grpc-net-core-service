@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\Greet\*.proto" ProtoRoot="Protos\Greet"/>
+    <Protobuf Include="Protos\Calculator\*.proto" ProtoRoot="Protos\Calculator"/>
+    <Protobuf Include="Protos\WeatherForecast\*.proto" ProtoRoot="Protos\WeatherForecast"/>
+  </ItemGroup>
+</Project>

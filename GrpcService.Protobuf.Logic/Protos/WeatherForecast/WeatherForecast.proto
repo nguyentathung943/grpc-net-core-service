@@ -6,10 +6,12 @@ package WeatherForecast;
 
 service WeatherForecast {
   rpc Forecasting (WeatherForecastRequest) returns (WeatherForecastResponse);
+  rpc ForecastStreaming(WeatherForecastRequest) returns (stream WeatherForecastData);
+  rpc ForecastingWithChunkLimit(WeatherForecastRequest) returns (stream WeatherForecastResponse);
 }
 
 message WeatherForecastRequest {
-
+	int32 ChunkLimit = 1;
 }
 
 message WeatherForecastResponse {

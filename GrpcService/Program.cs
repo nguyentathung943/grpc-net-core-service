@@ -26,9 +26,11 @@ var app = builder.Build();
 
 app.UseRouting();
 
+// Is required for client calling
 app.UseGrpcWeb();
 
 app.UseCors();
+//
 
 app.UseEndpoints(endpoints =>
 {

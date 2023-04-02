@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+
+package Calculator;
+
+option csharp_namespace = "GrpcMaxProtobuf";
+
+message MaxRequest {
+    int32 Value = 1;
+}
+
+message MaxResponse {
+    int32 CurrentMaxValue = 1;
+}
