@@ -11,7 +11,8 @@ service WeatherForecast {
 }
 
 message WeatherForecastRequest {
-	int32 ChunkLimit = 1;
+	int32 DataLimit = 1;
+	int32 ChunkLimit = 2;
 }
 
 message WeatherForecastResponse {

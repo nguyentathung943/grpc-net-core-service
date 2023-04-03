@@ -17,7 +17,7 @@ namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
         {
             var response = new WeatherForecastResponse();
             var forecastData = new List<WeatherForecastData>();
-            var limit = 100000;
+            var limit = request.DataLimit;
 
             for (int i = 0; i < limit; i++)
             {
@@ -38,7 +38,7 @@ namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
 
         public override async Task ForecastStreaming(WeatherForecastRequest request, IServerStreamWriter<WeatherForecastData> responseStream, ServerCallContext context)
         {
-            var amount = request.ChunkLimit;
+            var amount = request.DataLimit;
             var count = 0;
             var tempC = 0;
 
@@ -64,10 +64,11 @@ namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
             var response = new WeatherForecastResponse();
             var forecastData = new List<WeatherForecastData>();
             var limitPerChunk = request.ChunkLimit;
-            var amount = 10000;
+            var amount = request.DataLimit;
             var limitCount = 0;
             var count = 0;
             var tempC = 0;
+
 
             for (count = 0; count < amount; count++)
             {
@@ -78,7 +79,7 @@ namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
                     forecastData = new List<WeatherForecastData>();
                     response = new WeatherForecastResponse();
                     limitCount = 0;
-                    await Task.Delay(100);
+                    await Task.Delay(200);
                 }
 
                 tempC = Random.Shared.Next(-20, 55);
@@ -92,6 +93,15 @@ namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
 
                 limitCount++;
             }
+
+            // Send the rest if there is any left
+            if (forecastData.Any())
+            {
+                response.WeatherForecastData.AddRange(forecastData);
+                await responseStream.WriteAsync(response);
+                await Task.Delay(200);
+            }
+
         }
     }
 }

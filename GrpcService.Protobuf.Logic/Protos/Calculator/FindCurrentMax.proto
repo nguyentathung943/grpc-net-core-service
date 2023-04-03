@@ -9,5 +9,6 @@ message MaxRequest {
 }
 
 message MaxResponse {
-    int32 CurrentMaxValue = 1;
+    int32 CurrentCompareValue = 1;
+    int32 CurrentMaxValue = 2;
 }

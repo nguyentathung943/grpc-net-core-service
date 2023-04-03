@@ -22,6 +22,8 @@ builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
            .WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
 }));
 
+builder.Services.AddGrpcReflection();
+
 var app = builder.Build();
 
 app.UseRouting();
@@ -34,10 +36,16 @@ app.UseCors();
 
 app.UseEndpoints(endpoints =>
 {
+    if (app.Environment.IsDevelopment())
+    {
+        app.MapGrpcReflectionService();
+    }
+
     endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<CalculatorService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<WeatherForecastService>().EnableGrpcWeb().RequireCors("AllowAll");
 });
+
 
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
