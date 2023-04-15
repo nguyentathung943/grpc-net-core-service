@@ -1,16 +1,11 @@
 using Grpc.Core;
-using Microsoft.Extensions.Logging;
 using GrpcGreeterProtobuf;
 
-namespace GrpcService.Protobuf.Logic.Services.GreeterService
+namespace GrpcService.Protobuf.Services.GreeterService
 {
     public class GreeterService : Greeter.GreeterBase
     {
-        private readonly ILogger<GreeterService> _logger;
-        public GreeterService(ILogger<GreeterService> logger)
-        {
-            _logger = logger;
-        }
+        public GreeterService() {}
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {

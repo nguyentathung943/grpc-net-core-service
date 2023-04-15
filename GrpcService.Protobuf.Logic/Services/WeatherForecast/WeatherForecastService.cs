@@ -1,17 +1,12 @@
 ﻿using Grpc.Core;
 using GrpcWeatherForecastProtobuf;
-using Microsoft.Extensions.Logging;
 
-namespace GrpcService.Protobuf.Logic.Services.WeatherForecastService
+namespace GrpcService.Protobuf.Services.WeatherForecastService
 {
     public class WeatherForecastService : WeatherForecast.WeatherForecastBase
     {
-
-        private readonly ILogger<WeatherForecastService> _logger;
-        public WeatherForecastService(ILogger<WeatherForecastService> logger)
-        {
-            _logger = logger;
-        }
+        public WeatherForecastService()
+        {}
 
         public override Task<WeatherForecastResponse> Forecasting(WeatherForecastRequest request, ServerCallContext context)
         {
